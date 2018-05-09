@@ -7,6 +7,7 @@ router.register(r'client', views.ClientViewSet)
 router.register(r'project', views.ProjectViewSet)
 router.register(r'task', views.TaskViewSet) 
 router.register(r'time', views.TimeViewSet) 
+router.register(r'timepost', views.TimePostViewSet) 
 
 
     

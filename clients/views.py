@@ -3,7 +3,7 @@ from .models import Client, Project, Task, Time
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .serializers import ClientSerializer, ProjectSerializer, TaskSerializer, TimeSerializer
+from .serializers import ClientSerializer, ProjectSerializer, TaskSerializer, TimeSerializer, TimePostSerializer
 # Create your views here.
 class ClientViewSet(viewsets.ModelViewSet):
     """
@@ -36,3 +36,10 @@ class TimeViewSet(viewsets.ModelViewSet):
     queryset = Time.objects.all()
     serializer_class = TimeSerializer
     filter_fields = ('created',)
+
+class TimePostViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Time.objects.all()
+    serializer_class = TimePostSerializer

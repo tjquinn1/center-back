@@ -7,19 +7,24 @@ class ClientSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id','url','account_owner', 'name', 'start_date', 'end_date', 'notes')
 
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
-    client = ClientSerializer(many=False, read_only=True)
+    client = ClientSerializer(many=False, read_only=False)
     class Meta:
         model = Project
         fields = ('id','url', 'client', 'project_name', 'start_date', 'end_date')
 
 class TaskSerializer(serializers.HyperlinkedModelSerializer):
-    project = ProjectSerializer(many=False, read_only=True)
+    project = ProjectSerializer(many=False, read_only=False)
     class Meta:
         model = Task
         fields = ('id','url', 'project', 'task_name')
 
 class TimeSerializer(serializers.HyperlinkedModelSerializer):
-    task = TaskSerializer(many=False, read_only=True)
+    task = TaskSerializer(many=False, read_only=False)
+    class Meta:
+        model = Time
+        fields = ('id','url', 'task', 'time', 'non_billable', 'created')
+
+class TimePostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Time
         fields = ('id','url', 'task', 'time', 'non_billable', 'created')

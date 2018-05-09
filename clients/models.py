@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+import datetime
 
 # Create your models here.
 class Client(models.Model):
@@ -35,5 +36,5 @@ class Task(models.Model):
 class Time(models.Model):
     task = models.ForeignKey(Task, null=True, blank=True, on_delete=models.CASCADE)
     time = models.DecimalField(null=True, blank=True, max_digits=8, decimal_places=3)
-    created = models.DateField(default=timezone.now)
+    created = models.DateField(default=datetime.date.today())
     non_billable = models.BooleanField(default=False)
